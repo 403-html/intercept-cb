@@ -12,7 +12,7 @@ const {
 } = require("./logic");
 
 commentsRouter.get("/", (req, res) => {
-  res.json(getComments());
+  getComments().then((c) => res.send(c));
 });
 
 commentsRouter.post("/update", (req, res) => {

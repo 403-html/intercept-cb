@@ -8,7 +8,7 @@
   <body>
     <h1>Example page</h1>
 
-    <h2>Change GET</h2>
+    <h2>GET comments</h2>
     <button id="get_list-button">Get list</button>
     <ul id="get_list-list"></ul>
 
@@ -18,45 +18,34 @@
     <ul id="post-list"></ul>
 
     <script>
-      const requestBase = "https://cafebreak.qualityassurance.pl";
-
       const removeAllChildNodes = (parent) => {
         while (parent.firstChild) {
           parent.removeChild(parent.firstChild);
         }
       };
 
-      const sendRequest = (urlEnd, sentObj) => {
-        const url = `${requestBase}${urlEnd}`;
-      };
-
-      const getRequest = (urlEnd) => {
-        const url = `${requestBase}${urlEnd}`;
-      };
+      async function getRequest(url) {
+        let response = await fetch(url).then((resp) => resp.json());
+        console.log(response);
+        return response;
+      }
 
       document
         .getElementById("get_list-button")
         .addEventListener("click", () => {
-          // const items = getRequest("/get_items");
-          const items = {
-            1: {
-              text: "One",
-            },
-            2: {
-              text: "Two",
-            },
-          };
+          const res = getRequest("/comments");
           const list = document.getElementById("get_list-list");
           removeAllChildNodes(list);
 
-          Object.values(items).forEach(({ text }) => {
+          // TODO: Issue with iteration
+          for (const { user, comment } of res) {
             const listItem = document.createElement("li");
-            const itemText = document.createTextNode(text);
+            const itemText = document.createTextNode(`${user}: ${comment}`);
 
             listItem.appendChild(itemText);
 
             list.appendChild(listItem);
-          });
+          }
         });
 
       document.getElementById("post-button").addEventListener("click", () => {

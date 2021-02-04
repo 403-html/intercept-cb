@@ -3,16 +3,20 @@ const { connectDB } = require("../../models/connect");
 
 // Logic
 async function getComments(type = "all") {
-  const { db, client } = await connectDB();
-  let comments;
+  try {
+    const { db, client } = await connectDB();
+    let comments;
 
-  if ((type = "all")) {
-    comments = await db.collection("comments").find({});
+    if ((type = "all")) {
+      comments = await db.collection("comments").find({}).toArray();
+    }
+
+    client.close();
+
+    return comments;
+  } catch (err) {
+    console.log(`Error in getComments: ${err}`);
   }
-
-  client.close();
-
-  return comments;
 }
 
 async function addComment({ user, comment, addDate = new Date() }) {

@@ -21,3 +21,7 @@ app.use((req, res, next) => {
 
 app.use("/", basicRouter);
 app.use("/comments", commentsRouter);
+
+app.listen(port, () => {
+  console.log(`App is listening at http://localhost:${port}`);
+});
