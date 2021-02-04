@@ -37,7 +37,7 @@
           const list = document.getElementById("get_list-list");
           removeAllChildNodes(list);
 
-          // TODO: Issue with iteration
+          // TODO: #1 Issue with iteration
           for (const { user, comment } of res) {
             const listItem = document.createElement("li");
             const itemText = document.createTextNode(`${user}: ${comment}`);
