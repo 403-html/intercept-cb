@@ -1,15 +1,15 @@
 // Utils
-const express = require("express");
-const commentsRouter = express.Router();
+import { Router } from "express";
+const commentsRouter = Router();
 
 // Controllers
-const {
+import {
   getComments,
   addComment,
   updateComment,
   removeComment,
   clearAllComments,
-} = require("./logic");
+} from "./logic";
 
 commentsRouter.get("/", (req, res) => {
   getComments().then((c) => res.send(c));
@@ -37,4 +37,4 @@ commentsRouter.post("/dropRecords", (req, res) => {
   clearAllComments();
 });
 
-module.exports = commentsRouter;
+export default commentsRouter;

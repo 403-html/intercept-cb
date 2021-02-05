@@ -1,17 +1,16 @@
 require("dotenv").config();
 
 // Utils
-const faker = require("faker");
-const ObjectId = require("mongodb").ObjectId;
+import faker from "faker";
 
 // Express
-const express = require("express");
+import express from "express";
 const app = express();
 const port = process.env.port || 3000;
 
 // Controllers
-const basicRouter = require("./controllers/basic/routes");
-const commentsRouter = require("./controllers/comments/routes");
+import basicRouter from "./controllers/basic/routes";
+import commentsRouter from "./controllers/comments/routes";
 
 //Logic
 app.use((req, res, next) => {

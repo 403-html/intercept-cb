@@ -1,7 +1,7 @@
-const path = require("path");
+import { join } from "path";
 
 function sendIndex(req, res) {
-  res.sendFile(path.join(`${__dirname}../../../views/login.html`));
+  res.sendFile(join(`${__dirname}../../../views/login.html`));
 }
 
-module.exports = { sendIndex };
+export default { sendIndex };

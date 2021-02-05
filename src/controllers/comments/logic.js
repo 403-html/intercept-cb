@@ -1,5 +1,5 @@
 // Utils
-const { connectDB } = require("../../models/connect");
+import { connectDB } from "../../models/connect";
 
 // Logic
 async function getComments(type = "all") {
@@ -67,7 +67,7 @@ async function clearAllComments() {
   client.close();
 }
 
-module.exports = {
+export default {
   getComments,
   addComment,
   updateComment,

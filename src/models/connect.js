@@ -1,5 +1,5 @@
 // Mongo
-const MongoClient = require("mongodb").MongoClient;
+import { MongoClient } from "mongodb";
 const mongoPort = process.env.mongoPort;
 const mongoBaseURL = process.env.mongoHost;
 const mongoDBName = process.env.mongoDB;
@@ -16,4 +16,4 @@ async function connectDB() {
   return { db, client };
 }
 
-module.exports = { connectDB };
+export default { connectDB };
