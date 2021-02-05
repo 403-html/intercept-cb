@@ -1,8 +1,8 @@
-import { Router } from "express";
-const basicRouter = Router();
+var express = require("express");
+var basicRouter = express.Router();
 
 import { sendIndex } from "./logic";
 
-basicRouter.get("/", sendIndex);
+basicRouter.get("/", (req, res) => sendIndex(req, res));
 
 export default basicRouter;
