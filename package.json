@@ -1,32 +1,19 @@
 {
-  "name": "battlefield",
+  "name": "intercept-cb",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "type": "module",
+  "repository": "https://github.com/403-html/intercept-cb.git",
+  "author": "403-html <tymoteusz.stepien@wp.pl>",
+  "license": "MIT",
   "scripts": {
-    "cypress:open": "cypress open",
-    "nodemon": "nodemon ./dist/server.js",
-    "parcel-dev": "parcel ./src/server.js ./src/views/* --target node"
+    "start": "nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongodb": "^3.6.3"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
-    "cypress": "^6.4.0",
-    "eslint": "^7.19.0",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "faker": "^5.2.0",
-    "mocha": "^8.2.1",
-    "nodemon": "^2.0.7",
-    "parcel-bundler": "^1.12.4",
-    "prettier": "^2.2.1"
+    "nodemon": "^2.0.7"
   }
 }
