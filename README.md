@@ -17,7 +17,7 @@ Run `yarn install` or `npm install` to install all dependencies which are needed
 ### API
 For running API you can use `nodemon` which is pre-installed in package.json with command
 ```
-npm start
+yarn start
 ```
 or
 ```
