@@ -3,10 +3,41 @@ import { v4 as uuidv4 } from "uuid";
 
 const router = new Router();
 
-let users = [];
+const isUser = (user, id) => {
+  return user.id === id;
+};
+
+let users = [
+  {
+    id: "52ff5e34-1031-4edc-a792-0d28c65b425e",
+    firstName: "John",
+    lastName: "Doe",
+    age: 25,
+  },
+  {
+    id: "993b43d8-2cf8-479e-973b-fa09c53f9940",
+    firstName: "Marie",
+    lastName: "Hump",
+    age: 32,
+  },
+  {
+    id: "1bacedeb-bc00-4045-ba0a-789238eda7d8",
+    firstName: "Adelle",
+    lastName: "Modelle",
+    age: 19,
+  },
+];
 
 router.get("/", (req, res) => {
   res.send(users);
+});
+
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+
+  const foundUser = users.find((user) => isUser(user, id));
+
+  res.send(foundUser);
 });
 
 router.post("/", (req, res) => {
@@ -16,15 +47,7 @@ router.post("/", (req, res) => {
 
   users.push({ id: userId, ...user });
 
-  res.send(`User ${user.firstName} added`);
-});
-
-router.get("/:id", (req, res) => {
-  const { id } = req.params;
-
-  const foundUser = users.find((user) => user.id === id);
-
-  res.send(foundUser);
+  res.send({ message: `User ${user.firstName} added` });
 });
 
 router.delete("/:id", (req, res) => {
@@ -32,7 +55,7 @@ router.delete("/:id", (req, res) => {
 
   users = users.filter((user) => user.id !== id);
 
-  res.send(`User with ID: ${id} has been deleted`);
+  res.send({ message: `User with ID: ${id} has been deleted` });
 });
 
 router.patch("/:id", (req, res) => {
@@ -46,7 +69,7 @@ router.patch("/:id", (req, res) => {
   if (lastName) user.lastName = lastName;
   if (age) user.age = age;
 
-  res.send(`User with ID: ${id} has been updated`);
+  res.send({ message: `User with ID: ${id} has been updated` });
 });
 
 export default router;
