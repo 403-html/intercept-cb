@@ -9,6 +9,10 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use((req, res, next) => {
+  res.set("Cache-Control", "no-store");
+  next();
+});
 app.use("/users", usersRouter);
 
 app.get("/", (req, res) => {
